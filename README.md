@@ -7,11 +7,13 @@ Based on StackExchange.Redis - **Production Ready** - **Redis Client .Net Core**
 
 
 **Basic API:**     
-- redisService.SetValue("key", "value");
-- redisService.SetValue("tempkey", "value", TimeSpan.FromMinutes(1));  
+- redisService.SetValue("key", "value");  
+- redisService.SetValue("tempkey", "value", TimeSpan.FromMinutes(1));    
 
-- var keys = redisService.GetAllKeys();
-- var keys2 = redisService.GetAllDict();  
+- var keys = redisService.GetAllKeys();  
+- var keys2 = redisService.GetAllDict();    
+
+- Check out Interface at : https://github.com/eranltd/RedisSharpCore/blob/master/RedisSharp/IRedisService.cs  
 
 **Store Objects as strings using JSON**  
 public bool AddUpdate<T>(string key, T entity)
@@ -33,8 +35,6 @@ public bool AddUpdate<T>(string key, T entity)
         }
 
         public T Get<T>(string key) => redisService.Get<T>(key);  
-
-**check-out IRedisInterface**  
 
 
 Prerequisites:  
