@@ -1,18 +1,20 @@
-﻿using StackExchange.Redis;
+﻿using Microsoft.Extensions.Configuration;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 
 namespace RedisSharp
 {
     public sealed class RedisRepository
     {
         private readonly string _redisIP1;
-        private readonly string _redisIP2;
-        private readonly string _redisIP3;
+        //private readonly string _redisIP2;
+        //private readonly string _redisIP3;
         private readonly int _serverPort;
         private readonly int _databaseNumber;
-        private readonly string _password;
+        //private readonly string _password;
         private static volatile RedisRepository instance; //volatile for multi-threading..
         private static object syncRoot = new Object();
 
@@ -23,9 +25,9 @@ namespace RedisSharp
             try
             {
                 _redisIP1 = ReadSetting("RedisServerIP1");
-                _redisIP2 = ReadSetting("RedisServerIP2");
-                _redisIP3 = ReadSetting("RedisServerIP3");
-                _password = ReadSetting("RedisServerPassword");
+                //_redisIP2 = ReadSetting("RedisServerIP2");
+                //_redisIP3 = ReadSetting("RedisServerIP3");
+                //_password = ReadSetting("RedisServerPassword");
 
                 Int32.TryParse(ReadSetting("RedisServerPort"), out int serverPort);
                 _serverPort = serverPort;
@@ -39,11 +41,11 @@ namespace RedisSharp
                     EndPoints =
                     {
                         {_redisIP1, _serverPort},
-                        {_redisIP2, _serverPort},
-                        {_redisIP3, _serverPort}
+                        //{_redisIP2, _serverPort},
+                        //{_redisIP3, _serverPort}
                     },
                     KeepAlive = 90,
-                    Password = _password,
+                    //Password = _password,
                     AllowAdmin = true //** Needed for cache clear
                 };
                 Redis = ConnectionMultiplexer.Connect(configurationOptions);
@@ -103,18 +105,21 @@ namespace RedisSharp
         {
             try
             {
-                string RedisServiceSettingsSectionName = "RedisSettings";
-                System.Collections.Specialized.NameValueCollection R2RedisServiceSettings =
-                    ConfigurationManager.GetSection(RedisServiceSettingsSectionName) as System.Collections.Specialized.NameValueCollection;
 
-                var appSettings = R2RedisServiceSettings;
-                string result = appSettings != null ? appSettings[key] : "";
-                return result;
+                IConfigurationBuilder builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+                IConfigurationRoot configuration = builder.Build();
+                var configurationSection = configuration.GetSection("RedisSettings");
+                var result = new List<IConfigurationSection>( configurationSection.GetChildren());
+                return result.Find(item => item.Key == key)?.Value;
             }
-            catch (ConfigurationErrorsException ex)
+            catch (Exception)
             {
-                throw ex;
+                return null;
             }
         }
+
     }
 }
