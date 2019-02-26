@@ -16,6 +16,7 @@ Based on StackExchange.Redis - **Production Ready** - **Redis Client .Net Core**
 - Check out Interface at : https://github.com/eranltd/RedisSharpCore/blob/master/RedisSharp/IRedisService.cs  
 
 **Store Objects as strings using JSON**  
+```csharp
 public bool AddUpdate<T>(string key, T entity)  
         {  
             redisService.Store<T>(key, entity);  
