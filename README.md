@@ -1,14 +1,14 @@
 # RedisSharpCore  
-Based on StackExchange.Redis - Production Ready - Redis Client .Net Core  
+Based on StackExchange.Redis - **Production Ready** - **Redis Client .Net Core**  
 
 Usage:  
 
 Prerequisites:  
 
--Visual Studio 2017  
--.NET Core 2.1 and up  
--Redis Server(s)  
--StackExchange.Redis (via Nuget)  
+- Visual Studio 2017  
+- .NET Core 2.1 and up  
+- Redis Server(s)  
+- StackExchange.Redis (via Nuget)  
 
 How To Install Redis Server via Linux:  
 
@@ -17,25 +17,24 @@ How To Install Redis Server via Linux:
 > sudo apt-get install redis-server  
 > redis-cli -v  
 
-Restart the Redis server to make sure it is running:
-> sudo service redis-server restart
+Restart the Redis server to make sure it is running:  
+> sudo service redis-server restart  
 
-Execute a simple Redis command to verify your Redis server is running and available:
+Execute a simple Redis command to verify your Redis server is running and available:  
 
-$ redis-cli 
-127.0.0.1:6379> set user:1 "Jane"
-127.0.0.1:6379> get user:1
-"Jane"
+$ redis-cli   
+127.0.0.1:6379> set user:1 "Jane"  
+127.0.0.1:6379> get user:1  
+"Jane"  
 
-To stop your Redis server:
-> sudo service redis-server stop
-
-
+To stop your Redis server:  
+> sudo service redis-server stop  
 
 
 
-StackExchange.Redis
-Release Notes
+
+
+**StackExchange.Redis Release Notes**
 
 Overview (StackExchange.Redis)
 StackExchange.Redis is a high performance general purpose redis client for .NET languages (C# etc). It is the logical successor to BookSleeve, and is the client developed-by (and used-by) Stack Exchange for busy sites like Stack Overflow.
@@ -52,7 +51,7 @@ StackExchange.Redis can be installed via the nuget UI (as StackExchange.Redis), 
 PM> Install-Package StackExchange.Redis
 
 
-#Documentation
+**Documentation
 
 https://github.com/StackExchange/StackExchange.Redis
 https://redislabs.com/blog/redis-on-windows-10/
