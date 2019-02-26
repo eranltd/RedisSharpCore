@@ -1,7 +1,41 @@
 # RedisSharpCore  
 Based on StackExchange.Redis - **Production Ready** - **Redis Client .Net Core**  
 
-Usage:  
+**Usage:**    
+- Simple add this Class Library to your .NET Core Project
+- Call Service Singleton - **IRedisService redisService = RedisService.Instance;**
+
+
+**Basic API:**     
+- redisService.SetValue("key", "value");
+- redisService.SetValue("tempkey", "value", TimeSpan.FromMinutes(1));  
+
+- var keys = redisService.GetAllKeys();
+- var keys2 = redisService.GetAllDict();  
+
+**Store Objects as strings using JSON**  
+public bool AddUpdate<T>(string key, T entity)
+        {
+            redisService.Store<T>(key, entity);
+            //var obj = Get<T>(key);  //check if insertion is successful
+            //if (obj == null)
+            //    return false;
+            return true;
+        }
+
+        public bool AddUpdate<T>(string key, T entity, TimeSpan expireIn)
+        {
+            redisService.Store<T>(key, entity, expireIn);
+            //var obj = Get<T>(key);  //check if insertion is successful
+            //if (obj == null)
+            //    return false;
+            return true;
+        }
+
+        public T Get<T>(string key) => redisService.Get<T>(key);  
+
+**check-out IRedisInterface**  
+
 
 Prerequisites:  
 
