@@ -5,17 +5,33 @@ Usage:
 
 Prerequisites:
 
+-Visual Studio 2017
+-.NET Core 2.1 and up
+-Redis Server(s)
+-StackExchange.Redis (via Nuget)
+
+How To Install Redis Server via Linux:
+
+> sudo apt-get update
+> sudo apt-get upgrade
+> sudo apt-get install redis-server
+> redis-cli -v
+
+Restart the Redis server to make sure it is running:
+> sudo service redis-server restart
+
+Execute a simple Redis command to verify your Redis server is running and available:
+
+$ redis-cli 
+127.0.0.1:6379> set user:1 "Jane"
+127.0.0.1:6379> get user:1
+"Jane"
+
+To stop your Redis server:
+> sudo service redis-server stop
 
 
 
-
-
-
-
-
-https://github.com/StackExchange/StackExchange.Redis
-
-https://redislabs.com/blog/redis-on-windows-10/
 
 
 StackExchange.Redis
@@ -37,14 +53,6 @@ PM> Install-Package StackExchange.Redis
 
 
 #Documentation
-Basic Usage - getting started and basic usage
-Configuration - options available when connecting to redis
-Pipelines and Multiplexers - what is a multiplexer?
-Keys, Values and Channels - discusses the data-types used on the API
-Transactions - how atomic transactions work in redis
-Events - the events available for logging / information purposes
-Pub/Sub Message Order - advice on sequential and concurrent processing
-Where are KEYS / SCAN / FLUSH*? - how to use server-based commands
-Profiling - profiling interfaces, as well as how to profile in an async world
-Scripting - running Lua scripts with convenient named parameter replacement
-Testing - running the StackExchange.Redis.Tests suite to validate changes
+
+https://github.com/StackExchange/StackExchange.Redis
+https://redislabs.com/blog/redis-on-windows-10/
