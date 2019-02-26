@@ -1,21 +1,21 @@
-# RedisSharpCore
-Based on StackExchange.Redis - Production Ready - Redis Client .Net Core
+# RedisSharpCore  
+Based on StackExchange.Redis - Production Ready - Redis Client .Net Core  
 
-Usage:
+Usage:  
 
-Prerequisites:
+Prerequisites:  
 
--Visual Studio 2017
--.NET Core 2.1 and up
--Redis Server(s)
--StackExchange.Redis (via Nuget)
+-Visual Studio 2017  
+-.NET Core 2.1 and up  
+-Redis Server(s)  
+-StackExchange.Redis (via Nuget)  
 
-How To Install Redis Server via Linux:
+How To Install Redis Server via Linux:  
 
-> sudo apt-get update
-> sudo apt-get upgrade
-> sudo apt-get install redis-server
-> redis-cli -v
+> sudo apt-get update  
+> sudo apt-get upgrade  
+> sudo apt-get install redis-server  
+> redis-cli -v  
 
 Restart the Redis server to make sure it is running:
 > sudo service redis-server restart
