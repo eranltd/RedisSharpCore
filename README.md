@@ -4,7 +4,7 @@ Based on StackExchange.Redis - **Production Ready** - **Redis Client .Net Core**
 **Usage:**    
 - Simple add this Class Library to your .NET Core Project
 - Call Service Singleton - **IRedisService redisService = RedisService.Instance;**
-
+- Add appsettings.json - file exmaple can be found at : https://github.com/eranltd/RedisSharpCore/blob/master/RedisSharpCoreXUnit/appsettings.json  
 
 **Basic API:**     
 - redisService.SetValue("key", "value");  
